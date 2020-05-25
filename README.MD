@@ -3,7 +3,7 @@ Script automates capturing screenshots using Chrome.
 
 ### Requirements
 
-- python
+- python3 `brew install python3`
 
 - install python libraries using 
   `pip install -r requirements.txt`
