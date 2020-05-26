@@ -13,6 +13,7 @@ WINDOW_WIDTH=int(os.environ.get('WINDOW_WIDTH', 1280))
 WINDOW_HEIGHT=int(os.environ.get('WINDOW_HEIGHT', 720))
 FRAME_COUNT=int(os.environ.get('FRAME_COUNT', 500))
 FRAMES_DIRECTORY=os.environ.get('FRAMES_DIRECTORY', 'frames')
+FPS=os.environ.get('FPS', 60)
 
 try:
     os.stat(FRAMES_DIRECTORY)
@@ -22,11 +23,11 @@ except:
 
 print("Capturing %d frames from: '%s' with dimensions %dx%d " % (FRAME_COUNT, URL,  WINDOW_WIDTH, WINDOW_HEIGHT))
 
-def save_jpg(data, fnum):
+def save_jpg(data, fnum, tick_time):
 	image = Image.open(io.BytesIO(data))
 	image = image.convert('RGB')
 	image.save("frames/frame-%0.5d.jpg" % n)
-	print("%d of %d saved" % (fnum, FRAME_COUNT))
+	print("%d @ %s of %d saved" % (fnum, time.ctime(tick_time), FRAME_COUNT))
 
 
 options = Options()
@@ -56,10 +57,12 @@ driver.get(URL)
 time.sleep(5)
 
 
-
+t = time.time()
 for n in range(FRAME_COUNT):
-	driver.execute_script("app.tick()")
+	tick_time = int(t)
+	driver.execute_script("app.tick(%d)" % tick_time)
 	# time.sleep(0.0001)
-	save_jpg(driver.get_screenshot_as_png(), n)
+	save_jpg(driver.get_screenshot_as_png(), n, tick_time)
+	t += 1.0/FPS
 	
 driver.close()
