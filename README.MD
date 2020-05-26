@@ -23,17 +23,8 @@ For Safari, would need to enable "Allow Remote Automation" in "Developer" menu a
 
 ### Settings
 
-See `run.sh`:
+See `run.sh` for settings
 
-```
-export WINDOW_WIDTH=960 # on retina screenshots will be 2x
-export WINDOW_HEIGHT=663 # 663 on retina gives 1080 image height due to a bar in header
-export FRAME_COUNT=2000 # number of frames
-export URL="http://digital-theater.kramweisshaar.com/?noauto"
-
-OUTPUT_VIDEO=dt.mkv
-FRAMES_DIRECTORY="frames"
-```
 ### Run
 
 `run.sh`
