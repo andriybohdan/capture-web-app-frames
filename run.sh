@@ -7,7 +7,6 @@ export FRAME_COUNT=180 # number of frames
 
 
 export URL="http://digital-theater.kramweisshaar.com/?noauto"
-export URL="http://localhost:3000/?noauto"
 
 OUTPUT_VIDEO=dt.mkv
 FRAMES_DIRECTORY="frames"
