@@ -26,33 +26,40 @@ def save_jpg(data, fnum):
 	image = Image.open(io.BytesIO(data))
 	image = image.convert('RGB')
 	image.save("frames/frame-%0.5d.jpg" % n)
+	print("%d of %d saved" % (fnum, FRAME_COUNT))
 
 
-chrome_options = Options()
-chrome_options.add_argument("--window-size=1920,1080")
-chrome_options.add_argument("--start-maximized")
-chrome_options.add_argument("--enable-automation")
-chrome_options.add_argument("--no-sandbox")
-chrome_options.add_argument("--disable-infobars")
-# chrome_options.add_argument("--disable-dev-shm-usage")
-# chrome_options.add_argument("--disable-browser-side-navigation")
+options = Options()
+options.add_argument('start-maximized')
+options.add_argument('disable-infobars')
 
-driver = webdriver.Chrome(chrome_options=chrome_options)
+options.add_experimental_option("excludeSwitches", ["enable-automation"])
 
-driver.set_window_size(WINDOW_WIDTH, WINDOW_HEIGHT);
+
+mobile_emulation = {
+	"deviceMetrics": {
+		"width": WINDOW_WIDTH,
+		"height": WINDOW_HEIGHT, 
+		"pixelRatio": 1,
+	}
+}
+
+options.add_experimental_option("mobileEmulation", mobile_emulation)
+
+
+
+driver = webdriver.Chrome(options=options)
+
+driver.set_window_size(WINDOW_WIDTH + 200, WINDOW_HEIGHT + 200);
 
 driver.get(URL)
 time.sleep(5)
 
 
 
-for n in range(0, FRAME_COUNT):
+for n in range(FRAME_COUNT):
 	driver.execute_script("app.tick()")
-	time.sleep(0.0001)
-
-	# driver.save_screenshot("frame-%0.5d.png" % n)
-
-	threading.Thread(target=save_jpg, args=(driver.get_screenshot_as_png(), n)).start()
-	print("%d of %d saved" % (n, FRAME_COUNT))
-
+	# time.sleep(0.0001)
+	save_jpg(driver.get_screenshot_as_png(), n)
+	
 driver.close()

@@ -1,13 +1,17 @@
 #! /bin/bash
 
 
-export WINDOW_WIDTH=960 # on retina divide value by 2
-export WINDOW_HEIGHT=663 # 663 on retina gives 1080
-export FRAME_COUNT=2000 # number of frames
+export WINDOW_WIDTH=1920
+export WINDOW_HEIGHT=1080
+export FRAME_COUNT=5 # number of frames
+
+
 export URL="http://digital-theater.kramweisshaar.com/?noauto"
 
 OUTPUT_VIDEO=dt.mkv
 FRAMES_DIRECTORY="frames"
+
+
 
 if [ ! -d $FRAMES_DIRECTORY ];  then
 	mkdir $FRAMES_DIRECTORY
