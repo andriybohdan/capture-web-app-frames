@@ -13,7 +13,7 @@ WINDOW_WIDTH=int(os.environ.get('WINDOW_WIDTH', 1280))
 WINDOW_HEIGHT=int(os.environ.get('WINDOW_HEIGHT', 720))
 FRAME_COUNT=int(os.environ.get('FRAME_COUNT', 500))
 FRAMES_DIRECTORY=os.environ.get('FRAMES_DIRECTORY', 'frames')
-FPS=os.environ.get('FPS', 60)
+FPS=int(os.environ.get('FPS', 60))
 
 try:
     os.stat(FRAMES_DIRECTORY)
