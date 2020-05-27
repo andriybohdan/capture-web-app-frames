@@ -27,7 +27,11 @@ See `run.sh` for settings
 
 ### Run
 
+Random topic:
+
 `run.sh`
+
+or pass topic as the first argument:
 
 `run.sh religion`
 
