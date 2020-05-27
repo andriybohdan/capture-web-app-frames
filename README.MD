@@ -29,4 +29,25 @@ See `run.sh` for settings
 
 `run.sh`
 
+`run.sh religion`
+
+### Topics
+
+available topics:
+
+```
+business
+education
+environment
+religion
+science
+technology
+world
+asia
+europe
+latin_america
+middle_east
+commentary
+art_reviews
+```
 
