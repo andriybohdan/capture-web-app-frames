@@ -55,6 +55,3 @@ commentary
 art_reviews
 ```
 
-### Downsample to 25fps
-
-After executing `run.sh` execute `downsample.sh`. `dt-downsampled.mp4` will produced

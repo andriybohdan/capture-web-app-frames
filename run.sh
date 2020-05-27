@@ -24,9 +24,9 @@ TOPIC=$1
 
 export URL="http://digital-theater.kramweisshaar.com/${TOPIC}?noauto"
 
-OUTPUT_VIDEO=dt.mkv
+OUTPUT_VIDEO=dt
 FRAMES_DIRECTORY="frames"
-export FPS=60
+export FPS=25
 
 
 
@@ -39,7 +39,13 @@ echo "Capture screenshots with dimensions: $WINDOW_WIDTHx$WINDOW_HEIGHT"
 python ./capture.py
 
 if [ $? = 0 ]; then
-  yes | ffmpeg -f image2 -pattern_type glob -framerate $FPS -i 'frames/frame-*.jpg' -codec copy -s "$WINDOW_WIDTHx$WINDOW_HEIGHT" $OUTPUT_VIDEO
+  yes | ffmpeg -f image2 -pattern_type glob -framerate 60 -i 'frames/frame-*.jpg' -codec copy -s "$WINDOW_WIDTHx$WINDOW_HEIGHT" $OUTPUT_VIDEO.mkv
+
+  if [ "$FPS" -ne "60" ];then
+    yes | ffmpeg -i $OUTPUT_VIDEO.mkv -filter:v fps=fps=$FPS $OUTPUT_VIDEO.mp4
+  fi
+
+
   if [ $? = 0 ]; then
     echo "Done!"
   fi
