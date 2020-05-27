@@ -3,7 +3,7 @@
 
 export WINDOW_WIDTH=1920
 export WINDOW_HEIGHT=1080
-export FRAME_COUNT=6 # number of frames
+export FRAME_COUNT=600 # number of frames
 
 
 TOPIC=$1
