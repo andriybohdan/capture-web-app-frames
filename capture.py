@@ -26,7 +26,7 @@ print("Capturing %d frames from: '%s' with dimensions %dx%d " % (FRAME_COUNT, UR
 def save_jpg(data, fnum, tick_time):
 	image = Image.open(io.BytesIO(data))
 	image = image.convert('RGB')
-	image.save("frames/frame-%0.5d.jpg" % n)
+	image.save("%s/frame-%0.5d.jpg" % (FRAMES_DIRECTORY, n))
 	print("%d @ %s of %d saved" % (fnum, time.ctime(tick_time), FRAME_COUNT))
 
 
