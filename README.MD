@@ -23,17 +23,24 @@ For Safari, would need to enable "Allow Remote Automation" in "Developer" menu a
 
 ### Settings
 
-See `run.sh` for settings
+See `run-dt.sh` for DT settings
+
+See `run-karaoke.sh` for Headline Karaoke settings
+
 
 ### Run
 
 Random topic:
 
-`run.sh`
+`run-dt.sh`
+
 
 or pass topic as the first argument:
 
-`run.sh religion`
+`run-dt.sh religion`
+
+Headline Karaoke: `run-karaoke.sh`
+
 
 ### Topics
 
